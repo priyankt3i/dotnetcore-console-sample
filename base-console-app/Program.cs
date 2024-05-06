@@ -139,15 +139,18 @@ namespace PrintScreen
 
         static String PrintScreen()
         {
-            var count =  llc.Screen.GetScreenCount();
-            llc.Natives.RECT rect = llc.Screen.GetScreenRect();
+            //var count =  llc.Screen.GetScreenCount();
+            //llc.Natives.RECT rect = llc.Screen.GetScreenRect();
+ 
             Rectangle bounds = new Rectangle
             {
-                X = rect.left,
-                Y = rect.top,
-                Width = rect.right - rect.left,
-                Height = rect.bottom - rect.top
+                X = SystemInformation.VirtualScreen.Left,
+                Y = SystemInformation.VirtualScreen.Top,
+                Width = SystemInformation.VirtualScreen.Width,
+                Height = SystemInformation.VirtualScreen.Height
             };
+
+
             Bitmap bmp = new Bitmap(bounds.Width, bounds.Height);
             using (Graphics g = Graphics.FromImage(bmp))
                 g.CopyFromScreen(bounds.Location, Point.Empty, bounds.Size);
