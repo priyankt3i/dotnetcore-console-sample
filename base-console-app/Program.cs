@@ -37,8 +37,10 @@ namespace PrintScreen
             Console.WriteLine("1. Press PrintScreen to save the entire screen.");
             Console.WriteLine("2. Press Alt+PrintScreen to save the current window.");
             Console.WriteLine("3. Press Ctrl+C to exit.");
-            string todayFolder = DateTime.Now.ToString("yyyyMMdd").ToString();
-            config.DefaultConfigEvent += () => { config["dir"] = @"%UserProfile%\Desktop\Screenshots\{todayFolder}"; };
+            string todayFolder = DateTime.Now.ToString("MM-dd-yyyy").ToString();
+            config.DefaultConfigEvent += () => { 
+                config["dir"] = @"%UserProfile%\Desktop\Screenshots\"+todayFolder+"\\"; 
+                };
             config.Load();
             config.Save();
             Console.WriteLine("4. The captured screens will be saved in: " + config["dir"]);

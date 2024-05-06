@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "dgSpecHash": "sv0rFVy8OhJ7PZXGbsU/DiWFaLg/m/TI4/+FX/nAXmAL0e4nUFdG9aiH94PW+Tmhgy4MjZUI4juC17NtiM6hnw==",
+  "success": true,
+  "projectFilePath": "/workspaces/dotnetcore-console-sample/base-console-app/base-console-app.csproj",
+  "expectedPackageFiles": [
+    "/home/codespace/.nuget/packages/lowlevelcontrols/1.4.0/lowlevelcontrols.1.4.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.app/2.2.8/microsoft.netcore.app.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.dotnetapphost/2.2.8/microsoft.netcore.dotnetapphost.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.dotnethostpolicy/2.2.8/microsoft.netcore.dotnethostpolicy.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.dotnethostresolver/2.2.8/microsoft.netcore.dotnethostresolver.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.platforms/2.2.4/microsoft.netcore.platforms.2.2.4.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.targets/2.0.0/microsoft.netcore.targets.2.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/portableconfiguration/2.1.0/portableconfiguration.2.1.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/runtime.win-x64.microsoft.netcore.app/2.2.8/runtime.win-x64.microsoft.netcore.app.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/runtime.win-x64.microsoft.netcore.dotnetapphost/2.2.8/runtime.win-x64.microsoft.netcore.dotnetapphost.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/runtime.win-x64.microsoft.netcore.dotnethostpolicy/2.2.8/runtime.win-x64.microsoft.netcore.dotnethostpolicy.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/runtime.win-x64.microsoft.netcore.dotnethostresolver/2.2.8/runtime.win-x64.microsoft.netcore.dotnethostresolver.2.2.8.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.reactive/6.0.1-preview.1/system.reactive.6.0.1-preview.1.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.reactive.windows.forms/6.0.1-preview.1/system.reactive.windows.forms.6.0.1-preview.1.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.app.runtime.win-x64/6.0.29/microsoft.netcore.app.runtime.win-x64.6.0.29.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.windowsdesktop.app.ref/6.0.29/microsoft.windowsdesktop.app.ref.6.0.29.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.windowsdesktop.app.runtime.win-x64/6.0.29/microsoft.windowsdesktop.app.runtime.win-x64.6.0.29.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/6.0.29/microsoft.aspnetcore.app.runtime.win-x64.6.0.29.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.netcore.app.host.win-x64/6.0.29/microsoft.netcore.app.host.win-x64.6.0.29.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LowLevelControls 1.4.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LowLevelControls",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PortableConfiguration 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PortableConfiguration",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Reactive.Windows.Forms 6.0.1-preview.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Reactive.Windows.Forms",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
+}
