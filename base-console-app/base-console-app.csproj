@@ -9,6 +9,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,6 @@
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     <PackageReference Include="PortableConfiguration" Version="2.1.0" />
     <PackageReference Include="System.Reactive.Windows.Forms" Version="6.0.1-preview.1" />
-    <PackageReference Include="System.Reflection" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
