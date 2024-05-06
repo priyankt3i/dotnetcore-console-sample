@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PortableConfiguration;
+using System.Runtime.InteropServices;
+using System.Drawing;
 using llc = LowLevelControls;
 
 namespace PrintScreen
@@ -30,9 +32,46 @@ namespace PrintScreen
                 return Path.GetDirectoryName(path);
             }
         }
+        
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        public static void SetConsoleWindowVisibility(bool visible)
+        {
+            IntPtr hWnd = FindWindow(null, Console.Title);
+            if (hWnd != IntPtr.Zero)
+            {
+                if (visible) ShowWindow(hWnd, 1); //1 = SW_SHOWNORMAL           
+                else ShowWindow(hWnd, 0); //0 = SW_HIDE               
+            }
+        }
+
+        static NotifyIcon notifyIcon = new NotifyIcon();
+        static bool Visible = true;
 
         static void Main(string[] args)
         {
+            //---------
+            notifyIcon.DoubleClick += (s, e) =>
+            {
+                Visible = !Visible;
+                SetConsoleWindowVisibility(Visible);
+            };
+            notifyIcon.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            notifyIcon.Visible = true;
+            notifyIcon.Text = Application.ProductName;
+
+            var contextMenu = new ContextMenuStrip();
+            contextMenu.Items.Add("Exit", null, (s, e) => { Application.Exit(); });
+            notifyIcon.ContextMenuStrip = contextMenu;
+
+            Console.WriteLine("Running!");
+
+            // Standard message loop to catch click-events on notify icon
+            // Code after this method will be running only after Application.Exit()
+
+            //---------
             Console.WriteLine("PrintScreen (made by priyankt3i, j3soon)");
             Console.WriteLine("1. Press PrintScreen to save the entire screen.");
             Console.WriteLine("2. Press Alt+PrintScreen to save the current window.");
@@ -55,6 +94,9 @@ namespace PrintScreen
             }
             kbdHook.UninstallGlobalHook();
             config.Save();
+
+            Application.Run(); 
+            notifyIcon.Visible = false;
         }
 
         private static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
@@ -133,5 +175,6 @@ namespace PrintScreen
             bmp.Save(name, ImageFormat.Png);
             return name;
         }
+        
     }
 }
