@@ -53,25 +53,6 @@ namespace PrintScreen
         static void Main(string[] args)
         {
             //---------
-            notifyIcon.DoubleClick += (s, e) =>
-            {
-                Visible = !Visible;
-                SetConsoleWindowVisibility(Visible);
-            };
-            notifyIcon.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            notifyIcon.Visible = true;
-            notifyIcon.Text = Application.ProductName;
-
-            var contextMenu = new ContextMenuStrip();
-            contextMenu.Items.Add("Exit", null, (s, e) => { Application.Exit(); });
-            notifyIcon.ContextMenuStrip = contextMenu;
-
-            Console.WriteLine("Running!");
-
-            // Standard message loop to catch click-events on notify icon
-            // Code after this method will be running only after Application.Exit()
-
-            //---------
             Console.WriteLine("PrintScreen (made by priyankt3i, j3soon)");
             Console.WriteLine("1. Press PrintScreen to save the entire screen.");
             Console.WriteLine("2. Press Alt+PrintScreen to save the current window.");
@@ -94,9 +75,6 @@ namespace PrintScreen
             }
             kbdHook.UninstallGlobalHook();
             config.Save();
-
-            Application.Run(); 
-            notifyIcon.Visible = false;
         }
 
         private static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
@@ -111,6 +89,8 @@ namespace PrintScreen
             {
                 if (llc.Keyboard.IsKeyDown((int)Keys.Menu))
                     Console.WriteLine("Saved Current Window - " + PrintWindow());
+                else if(llc.Keyboard.IsKeyDown((int)Keys.ControlKey))
+                    Console.WriteLine("Saved Full Screen - " + PrintFullScreen());
                 else
                     Console.WriteLine("Saved Current Screen - " + PrintScreen());
                 prscDown = true;
@@ -139,7 +119,23 @@ namespace PrintScreen
 
         static String PrintScreen()
         {
+            Screen currentScreen = Screen.FromPoint(Cursor.Position);
+
+            Bitmap bmp = new Bitmap(currentScreen.Bounds.Width, currentScreen.Bounds.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+                g.CopyFromScreen(currentScreen.Bounds.Location, Point.Empty, currentScreen.Bounds.Size);
+            // Since the program is single-threaded, race conditions won't happen
+            // For multi-threaded program, use the following with try-catch can guarantee that no file is overwritten:
+            // File.Open(path, FileMode.CreateNew)
+            String name = GetScreenshotName();
+            bmp.Save(name, ImageFormat.Png);
+            return name;
+        }
+
+        static String PrintFullScreen()
+        {
             //var count =  llc.Screen.GetScreenCount();
+            Screen currentScreen = Screen.FromPoint(Cursor.Position);
             //llc.Natives.RECT rect = llc.Screen.GetScreenRect();
  
             Rectangle bounds = new Rectangle
