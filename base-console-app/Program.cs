@@ -139,7 +139,8 @@ namespace PrintScreen
 
         static String PrintScreen()
         {
-            llc.Natives.RECT rect = llc.Screen.GetScaledVirtualScreenRect();
+            var count =  llc.Screen.GetScreenCount();
+            llc.Natives.RECT rect = llc.Screen.GetVirtualScreenRect();
             Rectangle bounds = new Rectangle
             {
                 X = rect.left,
